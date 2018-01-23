@@ -105,12 +105,12 @@ namespace RoslynPad.Hosting
                 syncContext.RunOnCurrentThread();
             });
 
-            var setApartmentState = typeof(Thread).GetRuntimeMethods()
-                .FirstOrDefault(m => m.Name == "SetApartmentState");
-            if (setApartmentState != null)
-            {
-                setApartmentState.Invoke(executionThread, new object[] {0});
-            }
+            // var setApartmentState = typeof(Thread).GetRuntimeMethods()
+            //     .FirstOrDefault(m => m.Name == "SetApartmentState");
+            // if (setApartmentState != null)
+            // {
+            //     setApartmentState.Invoke(executionThread, new object[] {0});
+            // }
             
             executionThread.IsBackground = true;
             executionThread.Start();
@@ -118,7 +118,7 @@ namespace RoslynPad.Hosting
 #endif
         }
 
-        // Environment.Exit is not part of netstandard1.3...
+        // Environment.Exit is not part of netstandard2.0...
         private static readonly Action<int> Exit = (Action<int>)typeof(Environment)
             .GetRuntimeMethod("Exit", new[] { typeof(int) })
             ?.CreateDelegate(typeof(Action<int>));
@@ -202,7 +202,7 @@ namespace RoslynPad.Hosting
             {
                 var currentProcessId = Process.GetCurrentProcess().Id;
 
-                var remotePort = "RoslynPad-" + Guid.NewGuid();
+                var remotePort = "RP-" + Guid.NewGuid();
 
                 var processInfo = new ProcessStartInfo(HostPath)
                 {

@@ -5,7 +5,7 @@
     <LanguageTargets>$(MSBuildExtensionsPath)\$(VisualStudioVersion)\Bin\Microsoft.CSharp.targets</LanguageTargets>
     <OutputType>Library</OutputType>
     <TargetFramework>net46</TargetFramework>
-    <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <RootNamespace>RoslynPad.Editor</RootNamespace>
     <Version>$(EditorPackageVersion)</Version>
     <Description>Provides a Roslyn-based code editor using AvalonEdit (WPF platform) with completion, diagnostics, and quick actions</Description>
